@@ -1,8 +1,12 @@
-# CraveDash Static Pages
+# CraveDash
 
-This project contains the imported Stitch food delivery HTML screens, organized for easy browsing.
+CraveDash is a Vite + React food delivery landing/demo project with imported Stitch screens organized for easy browsing.
 
-## Structure
+## Live Demo
+
+https://crave-dash-xi.vercel.app/
+
+## Screens
 
 - `index.html` - project entry page with links to every screen.
 - `pages/home.html` - Discover Great Food screen.
@@ -11,4 +15,21 @@ This project contains the imported Stitch food delivery HTML screens, organized 
 - `assets/screens/` - preview screenshots for the entry page.
 - `docs/DESIGN.md` - original design notes.
 
-Open `index.html` in a browser to view the organized pages.
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
+
+The production build is generated in `dist/`.
+
+## Deployment
+
+This project is deployed on Vercel. The Vercel configuration is in `vercel.json`.
