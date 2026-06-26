@@ -1,6 +1,6 @@
 # CraveDash
 
-CraveDash is a Vite + React food delivery landing/demo project with imported Stitch screens organized for easy browsing.
+CraveDash is a Vite + React food delivery landing/demo project with organized screens for easy browsing.
 
 ## Live Demo
 
@@ -13,7 +13,7 @@ https://crave-dash-xi.vercel.app/
 - `pages/browse-restaurants.html` - Browse Restaurants screen.
 - `pages/complete-order.html` - Complete Your Order screen.
 - `assets/screens/` - preview screenshots for the entry page.
-- `docs/DESIGN.md` - original design notes.
+- `docs/DESIGN.md` - design notes.
 
 ## Local Development
 
