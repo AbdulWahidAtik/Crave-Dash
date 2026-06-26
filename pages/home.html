@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CraveDash | Satisfy Your Hunger</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .category-gradient {
+            background: linear-gradient(135deg, #ff5c00 0%, #a73a00 100%);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#ffb59a",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#ebe7e7",
+                      "surface-tint": "#a73a00",
+                      "primary": "#a73a00",
+                      "primary-container": "#ff5c00",
+                      "on-primary-container": "#521800",
+                      "tertiary": "#705d00",
+                      "background": "#fcf9f8",
+                      "on-tertiary-fixed": "#221b00",
+                      "secondary": "#006d37",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-container": "#f0edec",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#370e00",
+                      "outline": "#8f7065",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#6bfe9c",
+                      "secondary-fixed-dim": "#4ae183",
+                      "tertiary-fixed-dim": "#e9c400",
+                      "tertiary-fixed": "#ffe170",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#caa900",
+                      "surface-dim": "#dcd9d9",
+                      "primary-fixed-dim": "#ffb59a",
+                      "secondary-container": "#6bfe9c",
+                      "surface": "#fcf9f8",
+                      "on-secondary-container": "#00743a",
+                      "outline-variant": "#e4beb1",
+                      "on-tertiary-fixed-variant": "#544600",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-tertiary-container": "#4c3e00",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed-variant": "#802a00",
+                      "on-surface": "#1c1b1b",
+                      "inverse-on-surface": "#f3f0ef",
+                      "primary-fixed": "#ffdbce",
+                      "on-background": "#1c1b1b",
+                      "surface-bright": "#fcf9f8",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#00210c",
+                      "on-secondary-fixed-variant": "#005228",
+                      "inverse-surface": "#313030",
+                      "on-surface-variant": "#5b4137"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "container-margin": "20px",
+                      "md": "24px",
+                      "sm": "12px",
+                      "xs": "4px",
+                      "xl": "64px",
+                      "gutter": "16px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Be Vietnam Pro"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-lg": ["Be Vietnam Pro"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Be Vietnam Pro"],
+                      "body-md": ["Be Vietnam Pro"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface sticky top-0 z-40 shadow-sm">
+<div class="flex justify-between items-center w-full px-container-margin py-sm max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<span class="text-headline-lg-mobile md:text-headline-lg font-headline-lg italic font-black text-primary">CraveDash</span>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="#">Offers</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors duration-200 font-label-md" href="#">New</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors duration-200 font-label-md" href="#">Trending</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden lg:flex items-center bg-surface-container-low px-sm py-xs rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<span class="text-label-md px-xs">New York, NY</span>
+</div>
+<div class="flex gap-sm">
+<button class="p-xs hover:text-primary-container transition-colors"><span class="material-symbols-outlined">shopping_cart</span></button>
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="A professional headshot of a smiling young adult with warm, cinematic lighting. The individual has a friendly expression, captured against a soft-focus urban cafe background that blends seamlessly with the app's high-energy, modern aesthetic. The lighting is bright and clear, emphasizing a high-quality, professional user experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrRPLA_IzyP5hgp3N1FgFeXOA1YVGFlSK3AZtIxvryTMswUagk72xgkn0UGG2mkC2I7pvUkE4DeokAo_dAiFUvBlbMaAqJDc8sgr99Z-B0tLqHeucLVCiXrJ2r6s8gNb0P-QcsbQSP3NPIkEW3vzJfE9xYixlPs5WJ2LcsQ5PJUPHgNgF7xOU5EpED0CUEzVfHjZLkLCVKideigYImQ0QIWKttv8KnmMALjTcHhjQngqJI3MWE9uhAIwEC7_cdTiATqKVuwnAog"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pb-xl">
+<!-- Hero Section -->
+<section class="relative h-[500px] md:h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.6]" data-alt="A cinematic, wide-angle shot of a vibrant, steaming gourmet burger and artisan fries arranged on a rustic wooden table. The lighting is dramatic and warm, highlighting the textures of the food and the rising steam. The background is a softly blurred, high-end restaurant interior with warm orange and golden hues, creating an appetizing and energetic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDft398D1CH4N7oNlL7pOUss6Mku2ZxMzsemVOXsO8XtutKV2jZpPiyCXKKrXFq5VldV8NgPp1diopVdPr0o5RXKbQzL2ElhE7UkA7w2YDWk0oONimCmej4vNCeZdmTEmc-706RsJTLIaOuffd3_1OTd2sQ-9naBaSvo9dGDyT2H39dr_DckA2lfw2OsLlWY9hl1R4CzOy15JCzeu1arhn74_3KUl-mR120U032ZdZP0T7NLGIDbtGyroGEuIQg9LaydEmhX2nA_g"/>
+</div>
+<div class="container mx-auto px-container-margin relative z-10 text-white max-w-7xl">
+<div class="max-w-2xl">
+<h1 class="font-headline-xl text-headline-xl mb-md animate-float">Fastest delivery for your <span class="text-primary-container">favorite cravings.</span></h1>
+<p class="font-body-lg text-body-lg mb-lg opacity-90">Order from over 5,000 restaurants in your city with just one tap.</p>
+<div class="flex flex-col md:flex-row gap-xs bg-white p-xs rounded-xl shadow-lg md:rounded-full">
+<div class="flex-1 flex items-center px-md py-sm border-b md:border-b-0 md:border-r border-outline-variant">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<input class="w-full border-none focus:ring-0 text-on-surface font-label-md" placeholder="Enter delivery address" type="text" value="Downtown Manhattan, NY"/>
+</div>
+<div class="flex-[1.5] flex items-center px-md py-sm">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="w-full border-none focus:ring-0 text-on-surface font-label-md" placeholder="Search for food or restaurants" type="text"/>
+</div>
+<button class="bg-primary-container hover:bg-primary text-white font-bold px-xl py-sm rounded-lg md:rounded-full transition-all active:scale-95">Search</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Scroll -->
+<section class="mt-lg px-container-margin max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md">What are you craving?</h2>
+<a class="text-primary font-label-md flex items-center gap-xs" href="#">View all <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-sm">
+<!-- Category Items -->
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full category-gradient p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a delicious pepperoni pizza with melting cheese and golden crust, presented in a minimalist, clean overhead view. The colors are warm and saturated, emphasizing the appetizing texture of the pizza against a soft neutral background that matches the app's clean UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1I4V4FO4FDtLP3gotcr9HKgcrbtbFr_UljKzqzkw1uJpfRuogPO15SzP3DUcf1N3woCzRBQNNaA02mIcOExx8SEiQbXugZQmmnTsCJl7UG_hCGPS3bbp-7Q8FlHb6TIK0GPKMCL61ZbJoNX71oN6bOO_FHKq35vsALYHXhJJBhgg164pSYgn6w72GcQxr9_-U8hOeqY0MDzFCjggPXWNomw40lDoTtUJ4pUZbGBlSVYQT0oxLzxd1vnPUnXLlInkXYwtbd_AEqQ"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Pizza</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Fresh sushi rolls with salmon and avocado arranged beautifully on a slate platter. High-contrast lighting captures the glossy texture of the fish and the vibrant greens, maintaining a modern and appetizing aesthetic that aligns with the app's clean, high-end food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-0QYxzS88DmiP6AZvXcG4qhP5V9Tyhq9xeFOOupR0r4V6N68dU57oAplgdZSE-a4kp8xbdh2ImtT-7HuAAn4gtPuGd18-9utCmE7ioMc3ltp6vhKukaabY0CwKM7beMNjMcNdXOX515ieib4pS3WsMawUDk7SobVN-fHXiRTAC0WZX5bIbwsa8aEDl1NiK-EX50J6q5kgGFG8UUmiQMSZp_LMJQRXJQmJP4ygPbzghj4lO_7yyqd93Ww5Pyhc3OOtcv1tRtz39w"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Sushi</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A juicy, stacked gourmet burger with melting cheese and fresh lettuce, captured in a tight close-up. The lighting is warm and bright, highlighting the crispiness of the bun and the savory juices of the meat, designed to evoke immediate hunger in an urban explorer audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE41C0ys-ApyrKZ8xEy3h5XKnHwEJ96WsW9b7vfAwI7bWz6Ircq84Z3YFqjMU6CpNyb6NLGolO4HkxmdX4KrrhXjaIhX_L58DqrCK2oD78HxJd-H93WNCxic36INwjh4_XYDWVL2xR0uf0j453ypWHZrEg17P6kf4G6WFKs9C-dK1IbHjViCl1C85HDTjd3IgFxvfAvGfzZg0ow2gFR4aerOAT70cA-c6SnntjO9y84vaARQNUhVxjP-wCEaWyiHE7QlQMDRyLKw"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Burgers</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A vibrant, healthy salad bowl with roasted vegetables, avocado, and seeds. The overhead shot is bright and airy, with high-key lighting that emphasizes the freshness and high-quality ingredients, fitting perfectly into the app's professional and playful visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2P76RVIAHQags8zZH3F9IsdWQ94suLIaEkrCiPZu5aToxLHz5X-jPepbNmjZB8MGa-zRvvEZT6jjeMVThsWvYhFygoDsnrEpohQn3lPBrAUhHNu8fyarbqBzjo5r9bk5BrPNaCmnT67NrJ1jtkynFfwt-nTuzhxpzLJlzZYQkzK9m5v7Lnfjov6X1T8_dD_rO4d1Kdq71vprJBbzpAb3nTa6OA0mZmSwWHDYL_mmm5Lun7FDDuV0zZcyYbVPxv7gN6zUtWFFXPA"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Healthy</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An exquisite slice of chocolate cake with glossy ganache and fresh berries. The lighting is soft and luxurious, creating a sense of indulgence and treat. The image maintains a clean, modern aesthetic with a focus on rich textures and deep colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLAUfEiTJu6Oz8IOz9-IyffgzqZ642qb3sd-pHXZ1Jx9mdQT-CckXtjoznpjTQlAdCN8xLyOrfHtXieRhrlhBOD_WzSctlFo3O15vY3cVQ5StodZcCpdhGYrs2fOO9ge1GDS1DHJp8mdUvDWvclnKXZdR4zTRaU2kmji2h4tWo6v28VICQofWiTcNMQzEqvLUAmM2Jb-yRL2jVtbGyH3lLnLQVDlMrZGsuO_JB4_o4oiWz4YbadlPos-mVOcnTd0-A7YwTo_CE4w"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Desserts</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Succulent grilled meat skewers with vibrant vegetables, captured with a shallow depth of field. The lighting is warm and smoky, evoking a professional yet playful street-food vibe that appeals to urban food explorers looking for speed and joy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALeFtZizlt5RZKWNYaMYpSdwei6_hyw0qBZmMOrDmHsjs00J7isE_IIJNEpiDePsNlTKKZ9KD30axsyeV5kDiuftH5O6wjP4o9mzpSD4cb-CmJbsy_42me9xiGFZn4ix3rSQnF1a1sraLPuEgxRlwGFneFNOhivLoNmaUCJ_tzYe9OW6kVOZ3u4SJ-xiO4z4T425S-Zn1perr5DxN528HxeTfVDIUuxz_ShPdPdimhcA_pdOIYY8yYEbFvekBjPk8tJBeiG7GcRg"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">BBQ</span>
+</div>
+<div class="flex-shrink-0 group cursor-pointer text-center">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-surface-container-high p-0.5 mb-xs transition-transform group-hover:scale-105">
+<div class="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern take on crispy fried chicken with zesty dipping sauce. The photography is sharp and high-contrast, highlighting the crunchy texture and golden-brown colors against a clean, contemporary setting that feels both professional and Appetizing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF_NhHv6vE5Q-H95kKecHuiq41ObMi0LeYakBf2zGDP8A_I9fjI0FVkREb_AVf1kBiMsHC9h_ADjcHVcdJhsl2uxe3aIYLu2RIZFlCtlZcsuXvCfAMQjYgS21kxKvocyjMELiIsDrKg6ud_Dk44XIprI1WxhPr10HTlxzEGA_pAXv1ywVmZAMJHGJ_Zpx1fhv86DCYHBr-Ez0cGL58c-Lb7xvEfPMPJKfHyw3aMPMtk3OBBH1UhZVAaYBRD61HXsMoEnxt2C2UOw"/>
+</div>
+</div>
+<span class="font-label-md text-on-surface-variant group-hover:text-primary">Fast Food</span>
+</div>
+</div>
+</section>
+<!-- Trending Section -->
+<section class="mt-lg px-container-margin max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md">Trending Near You</h2>
+<div class="flex gap-xs">
+<button class="p-xs rounded-full border border-outline hover:bg-surface-container transition-all"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-xs rounded-full border border-outline hover:bg-surface-container transition-all"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Restaurant Card 1 -->
+<div class="group cursor-pointer bg-surface rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(49,48,48,0.08)] transition-all hover:-translate-y-1 hover:shadow-lg">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-end modern restaurant kitchen scene with chefs preparing artisan plates. The lighting is professional and moody with warm spotlights, creating a sense of quality and expertise. The aesthetic is clean and high-contrast, fitting the app's premium brand personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-1KAabXGQm3MdUYfK_Urh8rWpdtUqxT7lc2V6rNh8tUAH9V7sgx7I1LUIIkxMU6StF7Mi4Zx7xI1N8esxMpMssknr30m8uVQB8GVM4QxAwQ3413Nl15FhUFz6o6CTo0Ew4-O31L7B0t1Vf2UOWKmeYF0iSq_eLfAyNKsFR4iq_pIo1yJXgBjOcLfkWb-2CigaKj202DJXBmg-s7HSm6Knyft8oyq-0o6kFQJ17ZBomxo1oaHyRzfGk2hmfAF5yomRi3Q4qTBy8A"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm rounded-full px-sm py-1 flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md text-on-surface font-bold">4.8</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-primary-container text-white px-sm py-1 rounded-full text-label-sm font-bold shadow-sm">
+                            20-30 min
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-body-lg text-on-surface">The Artisan Grill</h3>
+<span class="text-primary-container"><span class="material-symbols-outlined">favorite</span></span>
+</div>
+<p class="text-on-surface-variant text-label-md mb-md">Gourmet Burgers • American • $$$</p>
+<div class="flex items-center gap-xs text-secondary font-label-md">
+<span class="material-symbols-outlined scale-75">delivery_dining</span>
+<span>Free delivery on orders over $25</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 2 -->
+<div class="group cursor-pointer bg-surface rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(49,48,48,0.08)] transition-all hover:-translate-y-1 hover:shadow-lg">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An inviting, modern bistro interior with warm ambient lighting and soft wooden textures. The composition is clean and focused, highlighting a stylish dining environment that values speed and quality ingredients. The colors are earthy yet vibrant, matching the high-contrast UI theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAwpkJBC3JnDhESUMb6gD0ZFyWqVoHTbUUcOgJGabTIgE44gPFHG79EXzwSCEL-N41RggKOJhXzO91vBypSrBcdAsSDxIwDuVy0-v0108RIWqHs47Zv2n4pzrWEwwW4_f-LibLUkEFvyZkcDDVnWcuSerodp3MIzh5FdgvW1MDk2F7WXRBPdt5eLXlNF8-a7T8HmT9o9d7OYgA573l33o_mxby_JJ1UFHafeM_2NuxcKGsHbX5XgR8-v7dfo4D0SYX0oVjx-Qoug"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm rounded-full px-sm py-1 flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md text-on-surface font-bold">4.5</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-primary-container text-white px-sm py-1 rounded-full text-label-sm font-bold shadow-sm">
+                            15-25 min
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-body-lg text-on-surface">Pasta &amp; Co</h3>
+<span class="text-on-surface-variant hover:text-primary-container"><span class="material-symbols-outlined">favorite</span></span>
+</div>
+<p class="text-on-surface-variant text-label-md mb-md">Italian • Homemade Pasta • $$</p>
+<div class="flex items-center gap-xs text-secondary font-label-md">
+<span class="material-symbols-outlined scale-75">bolt</span>
+<span>Fastest in your area</span>
+</div>
+</div>
+</div>
+<!-- Restaurant Card 3 -->
+<div class="group cursor-pointer bg-surface rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(49,48,48,0.08)] transition-all hover:-translate-y-1 hover:shadow-lg">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A vibrant and colorful Japanese kitchen counter with fresh ingredients and sushi preparation. High-key lighting makes the bright colors of the vegetables and fish pop, creating an energetic and appetizing mood that complements the app's 'hunger-fulfillment' visual goal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADAI5ICNS2QlChbE_vYSalkcaUcpRKNDRXCksjforLNVnE2hRSwcU8yokPqSDpaf7mlKGY73UwuEYv8NcQ9Vs0bS9xvRpSgvH4mHdxK9d6RNIlQurOu11mZ7F1Apy3AC7CBcOEqCElLBWNlyo17pBxXzZ0QbbTSumYU07cRIztwHcbBHRIMKKKBS43aHJuj68D1p4HUJfdGznmMAMnSk8YBXp2Tn7HnSNX_CBOJozqHEvtKdC_V7kHUZSZQO90YB1gh7wfE1l0Jw"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur shadow-sm rounded-full px-sm py-1 flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary scale-75" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md text-on-surface font-bold">4.9</span>
+</div>
+<div class="absolute bottom-3 left-3 bg-primary-container text-white px-sm py-1 rounded-full text-label-sm font-bold shadow-sm">
+                            25-35 min
+                        </div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-body-lg text-on-surface">Sakura Sushi</h3>
+<span class="text-on-surface-variant hover:text-primary-container"><span class="material-symbols-outlined">favorite</span></span>
+</div>
+<p class="text-on-surface-variant text-label-md mb-md">Japanese • Sushi &amp; Ramen • $$$</p>
+<div class="flex items-center gap-xs text-on-tertiary-container font-label-md">
+<span class="material-symbols-outlined scale-75">verified</span>
+<span>Highly rated for quality</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Personalized Recommendations -->
+<section class="mt-xl px-container-margin max-w-7xl mx-auto bg-surface-container-lowest py-lg rounded-2xl shadow-sm">
+<div class="px-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-lg">
+<div>
+<h2 class="font-headline-md text-headline-md mb-xs">Made for you</h2>
+<p class="text-on-surface-variant font-body-md">Based on your recent cravings</p>
+</div>
+<div class="mt-md md:mt-0 flex flex-wrap gap-sm">
+<span class="px-md py-xs rounded-full bg-primary text-white font-label-md cursor-pointer">All Recommended</span>
+<span class="px-md py-xs rounded-full border border-outline text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md cursor-pointer">Under 30m</span>
+<span class="px-md py-xs rounded-full border border-outline text-on-surface-variant hover:bg-surface-container-high transition-all font-label-md cursor-pointer">Top Rated</span>
+</div>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar snap-x pb-sm">
+<!-- Recommendation Item 1 -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-sm shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A macro shot of a spicy taco with fresh salsa and lime. The lighting is extremely bright and saturated, focusing on the vibrant reds and oranges of the chili and tomatoes. The image is designed to look delicious and immediate, fitting the app's modern and high-contrast style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE7rBQKYJYjTwVVohq6gnk88-l1hA1t2C4YflTbGqaGgNZJJnnyXCMZHPW1YXOxpLvO2_258S1KlZmzHbaG1JgU-Ao3nDGIYRG6iknH80CQ_1HsNwm1PV34BH7kogriSB0nMI6C1dS8fq-MHiV5sVFvRwAR669t6Jztr5CLW3jI8OzwuzGYu2SXtbZKxiiJxG_vYYHa_twuiOsylXbtiuQGAo_NBLV1l2ey7gw3Zr2hNXj4zzmQNq-5U-ztKratXiYkue4rdg19A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<p class="text-label-sm uppercase tracking-wider font-bold mb-xs">Featured Dish</p>
+<p class="font-headline-md text-label-md">Signature Spicy Carnitas</p>
+</div>
+</div>
+<h4 class="font-label-md text-on-surface">Taco Heaven</h4>
+<div class="flex items-center gap-xs text-label-sm text-on-surface-variant">
+<span>4.7</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Mexican</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>$ • 20 min</span>
+</div>
+</div>
+<!-- Recommendation Item 2 -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-sm shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A beautiful spread of Mediterranean mezze, including hummus, olives, and warm pita bread. The lighting is soft and natural, with a focus on fresh colors and textures. The overall mood is social and appetizing, presented in a clean and modern layout that encourages exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwKZAQl3SNEV9ws52hmi_w1Wt9iulBJgMgZWSkTqdaExeevOwHblm0sNGdmTaHSuKEws8A6PyOTOv24SJ2umZKtZbQgcc4UkJcJ64WW2Aon8bBmryQwz4weqHJVBKcsB217fiYdKNakKCMDXfCfoZsUKiFjjhDGY7SoqPDl5k1FQAbrTtsh0bUS4Il2XUaFVbKRG6DALOAvssxr2Mozb5Mc5HCB-PISY5WR6vdn5gSxriZ-PW-PZWw97X3p7d7GATkDgLR6OHHJQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<p class="text-label-sm uppercase tracking-wider font-bold mb-xs">Featured Dish</p>
+<p class="font-headline-md text-label-md">Deluxe Hummus Platter</p>
+</div>
+</div>
+<h4 class="font-label-md text-on-surface">The Greek Spot</h4>
+<div class="flex items-center gap-xs text-label-sm text-on-surface-variant">
+<span>4.6</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Mediterranean</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>$$ • 25 min</span>
+</div>
+</div>
+<!-- Recommendation Item 3 -->
+<div class="min-w-[280px] md:min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-sm shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A steaming bowl of authentic Vietnamese Pho with fresh herbs and sprouts. The shot is a clean overhead angle with bright lighting that highlights the clarity of the broth and the vibrant green of the herbs. The image fits the app's focus on freshness and high-quality food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIbYFkPMUvh_GlZFPNeXyBbAJFKDYcEh6gI2cZv8ngwC8jzv-dwxiUdUSt0RGzGAx1rRlPc_zQXppkYiK3_zlzcUx7Hcym68p4rfPkhs8mv5_BSZnmt-4iX8PcMDgB3cvF-RW3boWzeZR1mtT2lpjt9fJeN_gkVHYErpPr4xFGrfpPQFTNXFX2Co6E0YKGcp7XXE_9s2X8091mQIoaawkd66tzQPt0MYIGSXkDQJOjCMOU7HkUUxpGgyAeUa7kqrz7h0iXsTGN5w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3 text-white">
+<p class="text-label-sm uppercase tracking-wider font-bold mb-xs">Featured Dish</p>
+<p class="font-headline-md text-label-md">Pho Special House Blend</p>
+</div>
+</div>
+<h4 class="font-label-md text-on-surface">Pho-tastic</h4>
+<div class="flex items-center gap-xs text-label-sm text-on-surface-variant">
+<span>4.9</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Vietnamese</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>$ • 15 min</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(49,48,48,0.08)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-2 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+</a>
+</nav>
+<!-- Footer (Desktop) -->
+<footer class="hidden md:flex flex-col items-center py-lg px-container-margin border-t border-outline-variant w-full bg-surface-container-lowest">
+<div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-4 gap-xl mb-lg">
+<div class="col-span-1 md:col-span-1">
+<span class="text-headline-md font-headline-md text-on-surface block mb-md">CraveDash</span>
+<p class="text-on-surface-variant font-body-md">Bringing the best restaurants in your city right to your doorstep, with speed and joy in every meal.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Company</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Partner with Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Support</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Help Center</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h5 class="font-label-md text-on-surface uppercase tracking-wider">Download Our App</h5>
+<div class="flex flex-col gap-xs">
+<button class="bg-black text-white px-md py-sm rounded-lg flex items-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined">apps</span>
+<div class="text-left"><p class="text-[10px] leading-tight">Download on the</p><p class="text-sm font-bold leading-tight">App Store</p></div>
+</button>
+<button class="bg-black text-white px-md py-sm rounded-lg flex items-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined">play_arrow</span>
+<div class="text-left"><p class="text-[10px] leading-tight">Get it on</p><p class="text-sm font-bold leading-tight">Google Play</p></div>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full border-t border-outline-variant pt-lg text-center">
+<p class="text-on-surface-variant font-body-md">© 2024 CraveDash Inc. All rights reserved.</p>
+</div>
+</footer>
+<!-- Cart Floating Action Button (Only on Home) -->
+<div class="fixed bottom-24 right-6 md:bottom-10 md:right-10 z-50">
+<button class="w-16 h-16 rounded-full bg-primary-container text-white shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all group">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] w-6 h-6 rounded-full flex items-center justify-center border-2 border-white font-bold group-hover:animate-bounce">3</span>
+</button>
+</div>
+<script>
+        // Simple micro-interaction for category items
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('click', () => {
+                item.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    item.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Sticky header behavior
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('nav');
+            if (currentScroll > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.add('bg-surface/95');
+                nav.classList.add('backdrop-blur-md');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.remove('bg-surface/95');
+                nav.classList.remove('backdrop-blur-md');
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>
